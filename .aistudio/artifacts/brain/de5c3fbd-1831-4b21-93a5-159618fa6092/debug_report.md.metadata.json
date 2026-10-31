@@ -1,0 +1,5 @@
+{
+  "summary":  "Подробный технический отчет об исправлении ошибки отображения вкладки Preview в Google AI Studio (конфликт Workbox NavigationRoute / dev-sw.js с Auth Bridge редиректами в iframe и блокировка Host-заголовка в Vite 8).",
+  "updatedAt":  "2026-10-31T02:47:47.329155278Z",
+  "userFacing":  true
+}

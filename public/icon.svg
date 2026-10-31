@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c1917" />
+      <stop offset="50%" stop-color="#0c0a09" />
+      <stop offset="100%" stop-color="#09090b" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background with subtle border -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)" />
+  <rect width="504" height="504" x="4" y="4" rx="124" fill="none" stroke="#f59e0b" stroke-opacity="0.35" stroke-width="6" />
+
+  <!-- Outer ambient ring -->
+  <circle cx="256" cy="240" r="150" fill="none" stroke="#f59e0b" stroke-opacity="0.1" stroke-width="40" />
+
+  <!-- Cocktail Coupe / Glass -->
+  <g filter="url(#glow)">
+    <!-- Stem and Base -->
+    <path d="M256 260 V 370" stroke="url(#goldGrad)" stroke-width="16" stroke-linecap="round" />
+    <path d="M200 370 H 312" stroke="url(#goldGrad)" stroke-width="16" stroke-linecap="round" />
+    
+    <!-- Bowl -->
+    <path d="M140 180 C 140 260 256 270 256 270 C 256 270 372 260 372 180 Z" fill="none" stroke="url(#goldGrad)" stroke-width="16" stroke-linejoin="round" />
+    <path d="M156 186 C 180 236 256 248 256 248 C 256 248 332 236 356 186 Z" fill="url(#accentGrad)" fill-opacity="0.25" />
+    
+    <!-- Liquid Surface line -->
+    <line x1="148" y1="184" x2="364" y2="184" stroke="url(#goldGrad)" stroke-width="12" stroke-linecap="round" />
+    
+    <!-- Cocktail Olive / Citrus Garnish -->
+    <circle cx="210" cy="150" r="18" fill="url(#goldGrad)" />
+    <line x1="180" y1="210" x2="230" y2="130" stroke="#fef08a" stroke-width="8" stroke-linecap="round" />
+
+    <!-- Checkmark Badge on right side representing Ops / Checklists -->
+    <circle cx="340" cy="330" r="44" fill="#0c0a09" stroke="url(#goldGrad)" stroke-width="10" />
+    <path d="M322 330 L 334 342 L 360 316" fill="none" stroke="#fbbf24" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Modern Brand Title -->
+  <text x="256" y="445" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="34" letter-spacing="4" fill="#f59e0b">BAR<tspan fill="#f3f4f6">OPS</tspan></text>
+</svg>

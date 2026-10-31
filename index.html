@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>BarOps — Управление барами и ресторанами</title>
+    <meta name="description" content="B2B SaaS мобильное веб-приложение для управления чек-листами, задачами, заявками и инвентаризацией складов бара и кухни." />
+    <meta property="og:title" content="BarOps — Управление барами и ресторанами" />
+    <meta property="og:description" content="B2B SaaS мобильное веб-приложение для управления чек-листами, задачами, заявками и инвентаризацией складов бара и кухни." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0c0a09" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="BarOps" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/pwa-192x192.png" />
+    <script>
+      // Prevent Service Worker navigation interception inside AI Studio Preview iframe
+      (function () {
+        try {
+          if ('serviceWorker' in navigator) {
+            var isInIframe = window.self !== window.top;
+            navigator.serviceWorker.getRegistrations().then(function (registrations) {
+              for (var i = 0; i < registrations.length; i++) {
+                var reg = registrations[i];
+                var scriptURL = (reg.active && reg.active.scriptURL) || (reg.installing && reg.installing.scriptURL) || '';
+                if (isInIframe || scriptURL.indexOf('dev-sw.js') !== -1) {
+                  reg.unregister();
+                }
+              }
+            }).catch(function () {});
+            if ('caches' in window) {
+              caches.keys().then(function (keys) {
+                for (var j = 0; j < keys.length; j++) {
+                  if (keys[j].indexOf('workbox') !== -1) {
+                    caches.delete(keys[j]);
+                  }
+                }
+              }).catch(function () {});
+            }
+            if (!isInIframe) {
+              window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js').catch(function () {});
+              });
+            }
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="bg-neutral-950 text-neutral-100 antialiased selection:bg-amber-500/30 selection:text-amber-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
